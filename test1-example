@@ -1,0 +1,80 @@
+#!/bin/perl
+use strict;
+use warnings;
+
+my $testfile ="";
+
+if ($ARGV[0]){
+$testfile = $ARGV[0];
+}
+else{
+print"\nTotal Tokens = 0\n";
+}
+
+if($testfile eq "testfiles/proj1e1"){
+print" 
+(PERIOD,\".\",1)
+(COMMA,\",\",2)
+(STRING,\"'a string'\",3)
+(COMMENT,\"#A comment\",4)
+(SCHEMES,\"Schemes\",5)
+(ID,\"FactsRules\",6)
+(COLON,\":\",7)
+(COLON_DASH,\":-\",7)
+(EOF,\"\",8)
+Total Tokens = 9\n";
+}
+
+if($testfile eq "testfiles/proj1e2"){
+print"
+(QUERIES,\"Queries\",1)
+(COLON,\":\",1)
+(ID,\"IsInRoomAtDH\",2)
+(LEFT_PAREN,\"(\",2)
+(STRING,\"'Snoopy'\",2)
+(COMMA,\",\",2)
+(ID,\"R\",2)
+(COMMA,\",\",2)
+(STRING,\"'M'\",2)
+(COMMA,\",\",2)
+(ID,\"H\",2)
+(RIGHT_PAREN,\")\",2)
+(COMMENT,\"#SchemesFactsRules<\",3)
+(PERIOD,\".\",4)
+(COMMENT,\"#|comment >=
+wow|#\",5)
+(EOF,\"\",7)
+Total Tokens = 16";
+}
+if($testfile eq "testfiles/proj1e3"){
+print"
+(QUERIES,\"Queries\",1)
+(COLON,\":\",1)
+(ID,\"IsInRoomAtDH\",2)
+(LEFT_PAREN,\"(\",2)
+(STRING,\"'Snoopy'\",2)
+(COMMA,\",\",2)
+(ID,\"R\",2)
+(COMMA,\",\",2)
+(STRING,\"'M'\",2)
+(ID,\"H\",2)
+(RIGHT_PAREN,\")\",2)
+(Q_MARK,\"?\",2)
+(RULES,\"Rules\",3) 
+(FACTS,\"Facts\",3)
+(SCHEMES,\"Schemes\",3)
+(UNDEFINED,\"&\",4)
+(UNDEFINED,\"@\",4)
+(QUERIES,\"Queries\",4)
+(COLON,\":\",5)
+(STRING,\"'hello
+I am'\",6)
+(UNDEFINED,\"\$\",7)
+(ID,\"A\",7)
+(UNDEFINED,\"'this has a
+Return
+The end''s near
+\",7)
+(EOF,\"\",10)
+Total Tokens = 24";
+}

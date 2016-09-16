@@ -1,0 +1,80 @@
+#!/bin/perl
+use strict;
+use warnings;
+
+my $testfile ="";
+
+if ($ARGV[0]){
+$testfile = $ARGV[0];
+}
+else{
+print"\nTotal Tokens = 0\n";
+}
+
+if($testfile eq "testfiles/proj3e1"){
+print" 
+SK(A,'c')? Yes(2)
+  A='a'
+  A='b'
+SK('b','c')? Yes(1)
+SK(X,X)? Yes(1)
+  X='b'
+SK(A,B)? Yes(3)
+  A='a', B='c'
+  A='b', B='b'
+  A='b', B='c'
+";
+}
+
+if($testfile eq "testfiles/proj3e2"){
+print"
+ab('joe','jim')? Yes(1)
+ab(who,'bob')? Yes(3)
+  who='bob'
+  who='jim'
+  who='joe'
+ab('joe',anyone)? Yes(2)
+  anyone='bob'
+  anyone='jim'
+ab(X,X)? Yes(1)
+  X='bob'
+ab(X,Y)? Yes(4)
+  X='bob', Y='bob'
+  X='jim', Y='bob'
+  X='joe', Y='bob'
+  X='joe', Y='jim'
+";
+}
+if($testfile eq "testfiles/proj3e3"){
+print"
+dc('ralph',X)? Yes(1)
+  X='howard'
+dc('bob','bob')? No
+dc(X,Y)? Yes(1)
+  X='ralph', Y='howard'
+";
+}
+if($testfile eq "testfiles/proj3e4"){
+print"
+people('joe','jim')? Yes(1)
+people(who,'bob')? Yes(3)
+  who='bob'
+  who='jim'
+  who='joe'
+people('joe',anyone)? Yes(2)
+  anyone='bob'
+  anyone='jim'
+people(X,X)? Yes(1)
+  X='bob'
+people(X,Y)? Yes(4)
+  X='bob', Y='bob'
+  X='jim', Y='bob'
+  X='joe', Y='bob'
+  X='joe', Y='jim'
+employer('ralph',X)? Yes(1)
+  X='howard'
+employer('bob','bob')? No
+employer(X,Y)? Yes(1)
+  X='ralph', Y='howard'
+";
+}

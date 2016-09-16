@@ -1,0 +1,58 @@
+#!/bin/perl
+use strict;
+use warnings;
+
+my $first;
+my $other;
+my $proj="1";
+my @thislab;#An array of the names of testfiles
+system("clear");#put everything at the top of the temrinal
+print "===================================================\n\t    T E S T  D R I V E R    -beta-\n===================================================\n";
+if ($ARGV[0]){#read in the arguments
+	 $first = "./test".$proj."-".$ARGV[0];
+	print "testing $ARGV[0] ";
+}
+else {
+	print"\nLook at the README file for examples of valid input\n";
+	exit;
+}
+if($ARGV[1]){
+	$other = "./test".$proj."-".$ARGV[1];
+	print "against $ARGV[1]";
+}
+else{
+	print"\nLook at the README file for exampes of valid input\n";
+	exit;
+}
+if ($ARGV[2]){
+	$proj = "$ARGV[2]";	
+	print" with test cases from Lab $proj";	
+}
+else{
+	print"\nYou need to specify a lab number!\n";
+	exit;	
+}
+print "\n-----------------------\n";#aesthetics
+my $dir = "./testfiles/";#opens the testfile folder
+opendir(BIN, $dir) or die "Can't open $dir: $!";
+my @testfiles = grep { -T "$dir/$_" } readdir BIN;#read in the testfile names
+foreach (@testfiles){
+	#print("$_\n");#prints all the test files
+	my $match = "proj"."$proj";
+	if ($_ =~ "$match"){#regular expression to match the Lab number
+		push(@thislab, "$_");
+	}
+}
+print("testfiles are: \n");
+foreach (@thislab){
+	print"$_\n";#prints all the testfiles used in this lab
+	my $tmp1 = "$_"."$ARGV[0]";#make a temporary file
+	my $tmp2 = "$_"."$ARGV[1]";
+	system ("$first testfiles/$_ > $tmp1");#run the code and save output to file
+	system ("$other testfiles/$_ > $tmp2");
+	system ("gvimdiff $tmp1 $tmp2");#opens up each comparison in a new window
+}
+#destructor
+system("rm proj*");#remove all temprorary files
+system("clear");#put everything at the top of the temrinal
+print "===================================================\n\t    T E S T  D R I V E R    -beta-\n===================================================\n";
